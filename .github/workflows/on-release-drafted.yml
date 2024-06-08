@@ -1,0 +1,19 @@
+name: When draft release created.
+
+on:
+  release:
+    types:
+      - created
+
+permissions:
+  contents: write
+
+jobs:
+  drafted:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: hoge
+        run: echo "New release drafted!"
