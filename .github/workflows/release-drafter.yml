@@ -1,15 +1,18 @@
 name: Release Drafter
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - closed
 
 permissions:
   contents: read
 
 jobs:
-  draft_release:
+  production:
+    if: github.event.pull_request.merged == true
     permissions:
       contents: write
       pull-requests: write
@@ -18,3 +21,10 @@ jobs:
       - uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          footer: |
+            <details><summary>CDK Diff</summary>
+            ```shell
+            test
+            ```
+            </details>

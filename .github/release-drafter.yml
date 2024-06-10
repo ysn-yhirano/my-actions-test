@@ -29,3 +29,5 @@ version-resolver:
 template: |
   ## What’s Changed
   $CHANGES
+footer: |
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
